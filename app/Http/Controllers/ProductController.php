@@ -11,13 +11,21 @@ class ProductController extends Controller
     {
         return Product::all();
     }
-
+    // {
+    //     "name" : "sản phẩm 1",
+    //     "price" : "99",
+    //     "descrption" : "32132",
+    //     "thumbnail" : "",
+    //     "images" : "[\"http://127.0.0.1:8000/api/images/1696487477.jpg\",\"http://127.0.0.1:8000/api/images/1696487477.png\",\"http://127.0.0.1:8000/api/images/1696487477.jpg\"]"
+    // }
     public function store(Request $request)
     {
         $product = new Product([
             'name' => $request->input('name'),
             'price' => $request->input('price'),
-            'description' => $request->input('description')
+            'description' => $request->input('description'),
+            'images' => $request->input('images'),
+            'thumbnail' => $request->input('thumbnail'),
         ]);
 
         $product->save();

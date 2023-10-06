@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FavourateController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,4 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('products', ProductController::class);
 
-Route::resource('favourates' , FavourateController::class);
+Route::post('/upload', [ImageController::class, 'upload'])->name('upload');
+Route::post('/uploads', [ImageController::class, 'uploads'])->name('uploads');
+
+Route::get('/images/{filename}', [ImageController::class, 'getImage'])->name('image.get');

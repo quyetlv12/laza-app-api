@@ -3,46 +3,61 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Favourate;
 
 class FavourateController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $list = Favourate::with('Products')->get();
-        return $list;
-        // return Favourate::all();
+        //
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $item = new Favourate([
-            'product_id' => $request->input('product_id'),
-        ]);
-
-        $item->save();
-
-        return response()->json($item, 201);
+        //
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
-        return Favourate::find($id);
+        //
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
-        $product = Favourate::find($id);
-        $product->update($request->all());
-
-        return response()->json($product, 200);
+        //
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-        $product = Favourate::find($id);
-        $product->delete();
-
-        return response()->json('Favourate deleted successfully', 200);
+        //
     }
 }
