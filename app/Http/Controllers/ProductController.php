@@ -9,15 +9,9 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return Product::all();
+        $products = Product::with('comments' , 'categories')->get();
+        return response()->json($products , 200);
     }
-    // {
-    //     "name" : "sản phẩm 1",
-    //     "price" : "99",
-    //     "descrption" : "32132",
-    //     "thumbnail" : "",
-    //     "images" : "[\"http://127.0.0.1:8000/api/images/1696487477.jpg\",\"http://127.0.0.1:8000/api/images/1696487477.png\",\"http://127.0.0.1:8000/api/images/1696487477.jpg\"]"
-    // }
     public function store(Request $request)
     {
         $product = new Product([
@@ -26,6 +20,9 @@ class ProductController extends Controller
             'description' => $request->input('description'),
             'images' => $request->input('images'),
             'thumbnail' => $request->input('thumbnail'),
+            'size' => $request->input('size'),
+            'comment_id' => $request->input('comment_id'),
+            'cate_id' => $request->input('cate_id')
         ]);
 
         $product->save();
