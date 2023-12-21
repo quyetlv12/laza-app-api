@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -15,7 +16,7 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-        $cate = Categories::with('products')->get();
+        $cate = Categories::get();
         return response()->json($cate , 200);
     }
 
@@ -44,7 +45,8 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        $products = Product::where('cate_id' , $id)->get();
+        return response()->json($products , 200);
     }
 
     /**
@@ -57,6 +59,9 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $cate = Categories::find($id);
+        $cate->update($request->all());
+        return response()->json($cate, 200);
     }
 
     /**
@@ -67,6 +72,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cate = Categories::find($id);
+        $cate->delete();
+        return response()->json('Cate deleted successfully', 200);
     }
 }

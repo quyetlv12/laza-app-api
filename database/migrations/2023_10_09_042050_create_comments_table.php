@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('user_name');
             $table->string('content');
             $table->unsignedBigInteger('product_id');
+            $table->integer('rating');
         });
     }
 

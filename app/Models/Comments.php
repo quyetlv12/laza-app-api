@@ -12,7 +12,8 @@ class Comments extends Model
     public $fillable = [
         'product_id',
         'user_name',
-        'content'
+        'content',
+        'rating'
     ];
     public function products(){
         return $this->belongsTo(Product::class , 'product_id'); 
