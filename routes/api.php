@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SizeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
@@ -56,3 +57,7 @@ Route::put('/order/update-status/{id}' , [OrderController::class , 'updateStatus
 
 //COMMENT
 Route::resource('comments', CommentController::class);
+
+//SIZE
+
+Route::resource('size' , SizeController::class);

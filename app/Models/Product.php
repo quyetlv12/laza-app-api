@@ -14,7 +14,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['name' , 'price' , 'description' , 'thumbnail' , 'images' , 'size' , 'comment_id' , 'cate_id'];
+    protected $fillable = ['name' , 'price' , 'description' , 'thumbnail' , 'images' , 'size' , 'comment_id' , 'cate_id' , 'size_id'];
 
     public function cart(){
         return $this->belongsToMany(Cart::class , 'id');
@@ -25,4 +25,8 @@ class Product extends Model
     public function Categories(){
         return $this->belongsTo(Categories::class , 'cate_id'); 
     }
+    // public function size(){
+    //     return $this->belongsTo(Size::class , 'size_id'); 
+
+    // }
 }
