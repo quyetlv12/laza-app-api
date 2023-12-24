@@ -9,5 +9,5 @@ class Size extends Model
 {
     use HasFactory;
     protected $table = 'sizes';
-    public $fillable = ['name'];
+    public $fillable = ['name' , 'description'];
 }
