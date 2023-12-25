@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comments;
 use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,6 +13,11 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::with('comments' , 'categories')->get();
+        $products = $products->map(function ($record) {
+            $sizeArray = json_decode($record->size, true);
+            $record->sizeArray = $sizeArray;
+            return $record;
+        });    
         return response()->json($products , 200);
     }
     public function store(Request $request)
@@ -24,7 +30,7 @@ class ProductController extends Controller
                 'description' => $request->input('description'),
                 'images' => $request->input('images'),
                 'thumbnail' => $request->input('thumbnail'),
-                // 'size' => $request->input('size'),
+                'size' => json_encode($request->input('size')),
                 'comment_id' => $request->input('comment_id'),
                 'cate_id' => $request->input('cate_id')
             ]);

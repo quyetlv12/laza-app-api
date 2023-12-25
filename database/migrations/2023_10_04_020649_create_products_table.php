@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('description');
             $table->json('images');
             $table->string('thumbnail');
-            $table->string('size');
+            $table->json('size');
             $table->unsignedBigInteger('comment_id')->nullable();
             $table->unsignedBigInteger('cate_id')->nullable();
         });
