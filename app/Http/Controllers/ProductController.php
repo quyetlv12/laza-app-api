@@ -24,7 +24,7 @@ class ProductController extends Controller
                 'description' => $request->input('description'),
                 'images' => $request->input('images'),
                 'thumbnail' => $request->input('thumbnail'),
-                'size' => $request->input('size'),
+                // 'size' => $request->input('size'),
                 'comment_id' => $request->input('comment_id'),
                 'cate_id' => $request->input('cate_id')
             ]);
