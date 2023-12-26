@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('phone');
             $table->enum('paymentMethod' , ['ATM' , 'MOMO' , 'VNPAY' , 'DELIVERY']);
             $table->enum('status' , ['WAITING_COMFIRM' , 'CONFIRM' , 'TRANSPORT' , 'DELIVERING' , 'RECEIVED '])->default('WAITING_COMFIRM');
-            
+            $table->string('createdBy');
         });
     }
 

@@ -29,12 +29,18 @@ class SizeController extends Controller
      */
     public function store(Request $request)
     {
-
-        $size = new Size([
-            'name' => $request->input('name')
-        ]);
-        $size->save();
-        return response()->json($size, 200);
+        if (Auth::check()) {
+            # code...
+            $size = new Size([
+                'name' => $request->name,
+                'description' => $request->description
+            ]);
+            $size->save();
+            return response()->json($size, 200);
+        }else{
+            return response()->json(['Bạn chưa đăng nhập'] , 403);
+        }
+       
     }
 
     /**

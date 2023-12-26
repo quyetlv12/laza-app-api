@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index()
     {
         //
-        $list = Order::with('cart')->get();
+        $list = Order::with('cart' , 'user')->where('createdBy' , '=' ,Auth::user()->id)->get();
         return response()->json($list , 200);
     }
 

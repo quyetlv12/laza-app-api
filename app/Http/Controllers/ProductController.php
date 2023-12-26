@@ -15,7 +15,7 @@ class ProductController extends Controller
         $products = Product::with('comments' , 'categories')->get();
         $products = $products->map(function ($record) {
             $sizeArray = json_decode($record->size, true);
-            $record->sizeArray = $sizeArray;
+            $record->size = $sizeArray;
             return $record;
         });    
         return response()->json($products , 200);
